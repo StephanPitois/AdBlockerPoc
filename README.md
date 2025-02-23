@@ -8,6 +8,14 @@ AdBlockerPoc is a proof-of-concept application demonstrating how to block advert
 - Displays a list of blocked items.
 - Toggle ad blocker on and off.
 
+## Technologies Used
+
+- **C#**: The primary programming language used.
+- **.NET 8**: The framework used for building the application.
+- **WPF**: Used for creating the desktop application's user interface.
+- **WebView2**: Used for embedding web content in the application.
+- **Rx.NET**: Used for event-driven programming and reactive extensions.
+
 ## Getting Started
 
 ### Prerequisites
