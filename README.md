@@ -8,6 +8,10 @@ AdBlockerPoc is a proof-of-concept Windows desktop application demonstrating how
 - Displays a list of blocked items.
 - Toggle ad blocker on and off.
 
+## Screenshot
+
+![image](https://github.com/user-attachments/assets/e2192d05-65b3-44db-8129-54d2840dbff3)
+
 ## Technologies Used
 
 - **C#**: The primary programming language used.
