@@ -1,6 +1,6 @@
 # AdBlockerPoc
 
-AdBlockerPoc is a proof-of-concept application demonstrating how to block advertisements in a web browser using the WebView2 control in a WPF application.
+AdBlockerPoc is a proof-of-concept Windows desktop application demonstrating how to block advertisements in a web browser using the WebView2 control in a WPF application.
 
 ## Features
 
