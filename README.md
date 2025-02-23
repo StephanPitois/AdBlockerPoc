@@ -10,7 +10,7 @@ AdBlockerPoc is a proof-of-concept Windows desktop application demonstrating how
 
 ## Screenshot
 
-![image](https://github.com/user-attachments/assets/e2192d05-65b3-44db-8129-54d2840dbff3)
+![image](https://github.com/user-attachments/assets/8d0a050b-3c7f-4662-9513-0544c9839371)
 
 ## Technologies Used
 
