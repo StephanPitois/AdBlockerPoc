@@ -15,7 +15,7 @@
 
         public override string ToString()
         {
-            return $"{CreationDate} ◾ {Content} {(IsBlocked ? " ◾ BLOCKED" : "")}";
+            return $"{CreationDate} ◾ {Content} {(IsBlocked ? " ◾ BLOCKED" : " ◾ ALLOWED")}";
         }
     }
 }

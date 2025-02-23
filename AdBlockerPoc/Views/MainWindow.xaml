@@ -3,10 +3,33 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
         Title="Ad Blocker POC" Height="600" Width="800">
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="RoundedButtonStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                CornerRadius="6"
+                                Padding="12,6">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <DockPanel>
-        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="LightGray">
-            <Button x:Name="AdBlockerButton" Content="Disable Ad Blocker" Margin="10" Padding="10,5" Click="AdBlockerButton_Click"/>
-        </StackPanel>
+        <Border BorderBrush="#FFDEDEDE" BorderThickness="0,0,0,1" DockPanel.Dock="Top">
+            <StackPanel Orientation="Horizontal" Background="#FFFCFCFC">
+                <Button x:Name="AdBlockerButton" Content="Disable Ad Blocker" Margin="10" Padding="10,5" Click="AdBlockerButton_Click" Background="#FF3969EE" Foreground="White" FontSize="14" Style="{StaticResource RoundedButtonStyle}">
+                    <Button.BorderBrush>
+                        <SolidColorBrush Color="#FF707070" Opacity="0"/>
+                    </Button.BorderBrush>
+                </Button>
+            </StackPanel>
+        </Border>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -14,11 +37,11 @@
                 <RowDefinition Height="200"/>
             </Grid.RowDefinitions>
             <wv2:WebView2 x:Name="WebView" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source=""/>
-            <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="Gray" ResizeDirection="Rows" ResizeBehavior="PreviousAndNext"/>
+            <GridSplitter Grid.Row="1" Height="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#FFDEDEDE" ResizeDirection="Rows" ResizeBehavior="PreviousAndNext"/>
             <ListBox x:Name="ItemsListBox" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                  VirtualizingStackPanel.IsVirtualizing="True"
                  VirtualizingStackPanel.VirtualizationMode="Recycling"
-                 ScrollViewer.CanContentScroll="True">
+                 ScrollViewer.CanContentScroll="True" BorderBrush="#00ABADB3">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding}">
@@ -27,6 +50,9 @@
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding IsBlocked}" Value="True">
                                             <Setter Property="Foreground" Value="DarkRed"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding IsBlocked}" Value="False">
+                                            <Setter Property="Foreground" Value="DarkGreen"/>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>

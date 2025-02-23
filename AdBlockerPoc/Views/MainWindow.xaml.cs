@@ -58,15 +58,15 @@ namespace AdBlockerPoc
                     var uri = new Uri(webResourceRequestedEventArgs.Request.Uri);
                     var host = uri.Host;
 
-                    if (_isAdBlockerEnabled)
+                    bool isAd = _adDomains.Contains(host) || _adDomains.Any(domain => host.EndsWith($".{domain}"));
+
+                    if (isAd)
                     {
-                        bool isBlocked = _adDomains.Contains(host) || _adDomains.Any(domain => host.EndsWith($".{domain}"));
+                        var newItem = new Item(uri.AbsoluteUri, _isAdBlockerEnabled);
+                        _itemQueue.Enqueue(newItem);
 
-                        if (isBlocked)
+                        if (_isAdBlockerEnabled)
                         {
-                            var newItem = new Item(uri.AbsoluteUri, isBlocked);
-                            _itemQueue.Enqueue(newItem);
-
                             var response = WebView.CoreWebView2.Environment.CreateWebResourceResponse(
                                 new MemoryStream(),
                                 403,
